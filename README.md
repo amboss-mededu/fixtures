@@ -17,6 +17,20 @@ And it currently supports the following databases:
 * Redis
 
 The fixture manager also allows you to replace placeholders in your fixtures programatically. See examples below.
+## Run tests
+
+To run tests you need docker and docker-compose installed.
+
+```
+# Run to build the container
+make build 
+
+# Run to install the dependecnies
+make install
+
+# Run to execute tests
+make test
+```
 
 ## Usage
 
