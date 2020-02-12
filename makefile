@@ -6,13 +6,12 @@ build: ## Rebuilding container for test
 
 .PHONY: install
 install: ## Installing dependencies
-#     @make -s build
 	docker-compose run fixtures_tests composer install
 
 .PHONY: test
 test: ## Running tests
-#     @make -s install
 	docker-compose run fixtures_tests ./run_tests.sh
+	docker-compose down -v
 
 .PHONY: help
 help: ## Help
