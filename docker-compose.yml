@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  fixtures_tests:
+    volumes:
+      - ./:/app
+    build:
+      context: .
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    command: --sql-mode=""
+    volumes:
+      - ./tests/Support/Scripts:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_DATABASE: fixtures_tests
+  redis:
+    image: redis:5.0.5-alpine
+    restart: unless-stopped

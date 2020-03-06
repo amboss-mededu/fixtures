@@ -17,12 +17,12 @@
         </whitelist>
     </filter>
     <php>
-        <env name="pdo_host" value="127.0.0.1"/>
+        <env name="pdo_host" value="mysql"/>
         <env name="pdo_database" value="fixtures_tests"/>
         <env name="pdo_username" value="root"/>
         <env name="pdo_password" value=""/>
 
-        <env name="redis_host" value="127.0.0.1"/>
+        <env name="redis_host" value="redis"/>
         <env name="redis_port" value="6379"/>
         <env name="redis_db_number" value="7"/>
         <env name="redis_namespace" value="fixtures:"/>
