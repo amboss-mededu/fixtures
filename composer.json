@@ -1,29 +1,29 @@
 {
-    "name": "theiconic/fixtures",
-    "description": "Load fixtures into database from different formats: Yaml, XML, etc.",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "THE ICONIC ENGINEERING TEAM",
-            "email": "engineering@theiconic.com.au"
-        }
-    ],
-    "require": {
-        "php": ">=5.4",
-        "symfony/yaml": "^4.3",
-        "symfony/finder": "^4.3",
-        "symfony/filesystem": "^4.3",
-        "symfony/config": "^4.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^5.3 || ^6.0",
-        "php-coveralls/php-coveralls": "^2.2"
-    },
-    "autoload": {
-        "psr-4": {
-            "TheIconic\\Fixtures\\": "src/",
-            "TheIconic\\Fixtures\\Test\\":"tests/TheIconic/Fixtures/"
-        }
+  "name": "theiconic/fixtures",
+  "description": "Load fixtures into database from different formats: Yaml, XML, etc.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "THE ICONIC ENGINEERING TEAM",
+      "email": "engineering@theiconic.com.au"
     }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "symfony/yaml": "^4.3",
+    "symfony/finder": "^4.3",
+    "symfony/filesystem": "^4.3",
+    "symfony/config": "^5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.3 || ^6.0",
+    "php-coveralls/php-coveralls": "^2.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "TheIconic\\Fixtures\\": "src/",
+      "TheIconic\\Fixtures\\Test\\": "tests/TheIconic/Fixtures/"
+    }
+  }
 }
