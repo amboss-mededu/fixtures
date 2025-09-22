@@ -62,9 +62,9 @@ class Fixture implements IteratorAggregate, Countable
     /**
      * Returns the iterable array.
      *
-     * @return \ArrayIterator
+     * @return \Traversable
      */
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->data);
     }
@@ -74,7 +74,7 @@ class Fixture implements IteratorAggregate, Countable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->data);
     }
