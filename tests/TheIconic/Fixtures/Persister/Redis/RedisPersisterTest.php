@@ -20,7 +20,7 @@ class RedisPersisterTest extends TestCase
      */
     private $testFixture;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->testFixture = Fixture::create($this->testParsedData);
     }
@@ -86,11 +86,10 @@ class RedisPersisterTest extends TestCase
         $this->assertTrue($persister->close());
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\PersisterException
-     */
     public function testInvalidConnection()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\PersisterException::class);
+
         $persister = new RedisPersister(
             'fake',
             $_ENV['redis_port'],

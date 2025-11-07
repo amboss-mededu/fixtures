@@ -1,26 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit bootstrap="vendor/autoload.php"
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnPhpunitDeprecations="true"
+         bootstrap="vendor/autoload.php"
          colors="true"
-        >
+         cacheDirectory=".phpunit.cache">
     <testsuites>
-        <testsuite name="The Iconic Fixtures Test Suite">
+        <testsuite name="theiconic-fixtures">
             <directory>./tests/TheIconic/Fixtures/</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <blacklist>
-            <directory>./vendor</directory>
-        </blacklist>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./tests/</directory>
-        </whitelist>
-    </filter>
     <php>
         <env name="pdo_host" value="mysql"/>
         <env name="pdo_database" value="fixtures_tests"/>
         <env name="pdo_username" value="root"/>
-        <env name="pdo_password" value=""/>
+        <env name="pdo_password" value="root"/>
 
         <env name="redis_host" value="redis"/>
         <env name="redis_port" value="6379"/>

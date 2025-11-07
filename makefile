@@ -2,16 +2,23 @@
 
 .PHONY: build
 build: ## Rebuilding container for test
-	docker-compose build
+	docker compose build
+
+.PHONY: up
+up: ## Up containers
+	docker compose up -d
 
 .PHONY: install
 install: ## Installing dependencies
-	docker-compose run fixtures_tests composer install
+	docker compose exec -it fixtures_tests composer install
 
 .PHONY: test
 test: ## Running tests
-	docker-compose run fixtures_tests ./run_tests.sh
-	docker-compose down -v
+	docker compose exec -it fixtures_tests ./run_tests.sh
+
+.PHONY: down
+down: ## Down containers
+	docker compose down -v
 
 .PHONY: help
 help: ## Help

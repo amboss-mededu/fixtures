@@ -19,7 +19,7 @@ class FixtureTest extends TestCase
      */
     private $testFixture;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->testFixture = Fixture::create($this->testParsedData);
     }

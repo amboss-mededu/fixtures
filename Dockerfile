@@ -1,10 +1,10 @@
-FROM php:7.4-fpm
+FROM php:8.4-fpm
 
 RUN \
   apt update \
   && apt install -y bash git zip\
   && docker-php-ext-install pdo_mysql \
-  && pecl install redis-5.3.7 \
+  && pecl install redis-6.3.0 \
   && docker-php-ext-enable redis \
   # Cleanup
   && rm -rf /tmp/pear/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*

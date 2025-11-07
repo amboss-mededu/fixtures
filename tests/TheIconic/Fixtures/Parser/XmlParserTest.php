@@ -17,7 +17,7 @@ class XmlParserTest extends TestCase
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->parserInstance = new XmlParser();
     }
@@ -36,11 +36,10 @@ class XmlParserTest extends TestCase
         $this->assertInstanceOf('TheIconic\Fixtures\Fixture\Fixture', $fixture);
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\InvalidParserException
-     */
     public function testParseException()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\InvalidParserException::class);
+
         $fixtureFile = self::TESTS_FIXTURES_DIRECTORY . 'currency_conversion_damage.xml';
 
         $this->parserInstance->parse($fixtureFile);

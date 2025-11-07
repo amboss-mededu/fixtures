@@ -28,7 +28,7 @@ class FixtureManagerPdoTest extends TestCase
         return $this->conn;
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->conn;
     }
@@ -83,29 +83,26 @@ class FixtureManagerPdoTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testFixtureManagerIllegalPersist()
     {
+        $this->expectException(\RuntimeException::class);
+
         $fixtureManager = FixtureManager::create('./tests/Support/TestsFixtures/country_region.yml');
 
         $fixtureManager->persist();
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\SourceNotFoundException
-     */
     public function testFixtureManagerInvalidSource()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\SourceNotFoundException::class);
+
         FixtureManager::create('fake.xml');
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\SourceNotFoundException
-     */
     public function testFixtureManagerEmptySource()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\SourceNotFoundException::class);
+
         FixtureManager::create([]);
     }
 

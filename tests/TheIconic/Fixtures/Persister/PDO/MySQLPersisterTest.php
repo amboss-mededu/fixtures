@@ -27,7 +27,7 @@ class MysqlPersisterTest extends TestCase
      */
     private $testFixture;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->testFixture = Fixture::create($this->testParsedData);
     }
@@ -46,11 +46,9 @@ class MysqlPersisterTest extends TestCase
         $this->assertTrue($persister->close());
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\PersisterException
-     */
     public function testInvalidPersist()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\PersisterException::class);
 
         $persister = new MysqlPersister(
             $_ENV['pdo_host'],
@@ -76,11 +74,10 @@ class MysqlPersisterTest extends TestCase
         $this->assertTrue($persister->close());
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\PersisterException
-     */
     public function testInvalidConnection()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\PersisterException::class);
+
         $persister = new MysqlPersister(
             $_ENV['pdo_host'],
             $_ENV['pdo_database'],

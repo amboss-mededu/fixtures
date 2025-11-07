@@ -17,7 +17,7 @@ class YamlParserTest extends TestCase
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->parserInstance = new YamlParser();
     }
