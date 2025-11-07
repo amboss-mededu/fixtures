@@ -107,7 +107,7 @@ class MasterParser extends AbstractParser
      * @return ParserInterface
      * @throws \TheIconic\Fixtures\Exception\InvalidParserException
      */
-    protected function getParserInstance($parserClass)
+    public function getParserInstance($parserClass)
     {
         if (class_exists($parserClass)) {
             return new $parserClass();
@@ -122,7 +122,7 @@ class MasterParser extends AbstractParser
      *
      * @return array
      */
-    protected function getParserNames()
+    public function getParserNames()
     {
         $parserNames = [];
 

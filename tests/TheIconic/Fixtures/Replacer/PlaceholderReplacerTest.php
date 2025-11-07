@@ -15,7 +15,7 @@ class PlaceholderReplacerTest extends TestCase
      */
     private $replacerInstance;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->replacerInstance = new PlaceholderReplacer();
     }

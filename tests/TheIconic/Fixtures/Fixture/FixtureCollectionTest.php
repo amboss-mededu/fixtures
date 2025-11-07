@@ -3,6 +3,7 @@
 namespace TheIconic\Fixtures\Test\Fixture;
 
 use PHPUnit\Framework\TestCase;
+use TheIconic\Fixtures\Exception\FixtureException;
 use TheIconic\Fixtures\Fixture\Fixture;
 use TheIconic\Fixtures\Fixture\FixtureCollection;
 
@@ -35,7 +36,7 @@ class FixtureCollectionTest extends TestCase
      */
     private $testFixtureCollection;
 
-    public function setUp()
+    public function setUp(): void
     {
         $fixtureCountry = Fixture::create($this->testParsedDataCountry);
         $this->testFixtureCollection = FixtureCollection::create($fixtureCountry);
@@ -69,11 +70,10 @@ class FixtureCollectionTest extends TestCase
         $this->assertCount(2, $this->testFixtureCollection);
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\FixtureException
-     */
     public function testIllegalAdd()
     {
+        $this->expectException(FixtureException::class);
+
         $fixtureCities = Fixture::create($this->testParsedDataCities);
         $this->testFixtureCollection->add($fixtureCities);
 

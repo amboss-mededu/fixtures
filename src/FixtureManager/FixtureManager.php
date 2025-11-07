@@ -12,7 +12,6 @@ use TheIconic\Fixtures\Replacer\PlaceholderReplacer;
 use TheIconic\Fixtures\Replacer\ReplacerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use TheIconic\Fixtures\Exception\SourceNotFoundException;
-use TheIconic\Fixtures\Persister\Redis\RedisPersisterFactory;
 
 /**
  * Class FixtureManager

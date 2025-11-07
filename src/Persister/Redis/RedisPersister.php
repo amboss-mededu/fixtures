@@ -47,7 +47,7 @@ class RedisPersister extends AbstractRedisPersister
         if ($this->conn === null) {
             try {
                 $redis = new Redis();
-                $redis->connect($this->config['host'], $this->config['port']);
+                @$redis->connect($this->config['host'], $this->config['port']);
                 $redis->select($this->config['dbNumber']);
                 $redis->setOption(Redis::OPT_SERIALIZER, $this->getSerializer($this->config['serializer']));
                 $redis->setOption(Redis::OPT_PREFIX, $this->config['namespace']);

@@ -20,11 +20,10 @@ class PersisterFactoryTest extends TestCase
         $this->assertInstanceOf('TheIconic\Fixtures\Persister\PDO\MysqlPersister', $persister);
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\PersisterException
-     */
     public function testInvalidCreate()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\PersisterException::class);
+
         PersisterFactory::create(
             $_ENV['pdo_host'],
             $_ENV['pdo_database'],

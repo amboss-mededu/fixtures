@@ -4,13 +4,10 @@ namespace TheIconic\Fixtures\Test\Parser;
 
 use PHPUnit\Framework\TestCase;
 use TheIconic\Fixtures\Parser\MasterParser;
+use TheIconic\Fixtures\Parser\ParserInterface;
 
 class MasterParserTest extends TestCase
 {
-    const MASTER_PARSER_FULLY_QUALIFIED_NAME = 'TheIconic\Fixtures\Parser\MasterParser';
-
-    const PARSER_INTERFACE_FULLY_QUALIFIED_NAME = 'TheIconic\Fixtures\Parser\ParserInterface';
-
     const TESTS_FIXTURES_DIRECTORY = './tests/Support/TestsFixtures/';
 
     const CURRENT_NUMBER_OF_PARSERS = 3;
@@ -20,7 +17,7 @@ class MasterParserTest extends TestCase
      */
     private $parserInstance;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->parserInstance = new MasterParser();
     }
@@ -50,48 +47,45 @@ class MasterParserTest extends TestCase
         $this->assertCount(self::CURRENT_NUMBER_OF_PARSERS, $availableParsers);
 
         foreach ($availableParsers as $parser) {
-            $this->assertInstanceOf(self::PARSER_INTERFACE_FULLY_QUALIFIED_NAME, $parser);
+            $this->assertInstanceOf(ParserInterface::class, $parser);
         }
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\InvalidParserException
-     */
     public function testFakeInvalidParserException()
     {
-        $parserInstance = $this->getMockBuilder(self::MASTER_PARSER_FULLY_QUALIFIED_NAME)
-                               ->setMethods(['getParserNames'])
+        $this->expectException(\TheIconic\Fixtures\Exception\InvalidParserException::class);
+
+        $parserInstance = $this->getMockBuilder(MasterParser::class)
+                               ->onlyMethods(['getParserNames'])
                                ->disableOriginalConstructor()
                                ->getMock();
 
         $parserInstance->expects($this->any())
             ->method('getParserNames')
-            ->will($this->returnValue(['FakeParser']));
+            ->willReturn(['FakeParser']);
 
         $parserInstance->getAvailableParsers();
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\InvalidParserException
-     */
     public function testRougueInvalidParserException()
     {
-        $parserInstance = $this->getMockBuilder(self::MASTER_PARSER_FULLY_QUALIFIED_NAME)
-            ->setMethods(['getParserInstance'])
+        $this->expectException(\TheIconic\Fixtures\Exception\InvalidParserException::class);
+
+        $parserInstance = $this->getMockBuilder(MasterParser::class)
+            ->onlyMethods(['getParserInstance'])
             ->getMock();
 
         $parserInstance->expects($this->any())
             ->method('getParserInstance')
-            ->will($this->returnValue(null));
+            ->willReturn(null);
 
         $parserInstance->getAvailableParsers();
     }
 
-    /**
-     * @expectedException \TheIconic\Fixtures\Exception\ParserNotFoundException
-     */
     public function testParserNotFoundException()
     {
+        $this->expectException(\TheIconic\Fixtures\Exception\ParserNotFoundException::class);
+
         $this->parserInstance->parse(self::TESTS_FIXTURES_DIRECTORY . 'fake.txt');
     }
 }
